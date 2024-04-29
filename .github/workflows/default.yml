@@ -42,4 +42,4 @@ jobs:
           pip install -r requirements.txt
       - name: Run Robot Framework tests
         run: |
-          robot --listener qaseio.robotframework.Listener example.robot
+          robot --listener qaseio.robotframework.Listener tests/example.robot
