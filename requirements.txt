@@ -1,0 +1,5 @@
+robotframework
+qase-python-commons==1.0.4
+qaseio==3.3.0
+qase-robotframework==2.0.1
+setuptools
