@@ -26,6 +26,7 @@ env:
   QASE_TESTOPS_RUN_ID: ${{ inputs.qase_run_id }}
   QASE_TESTOPS_COMPLETE_RUN: ${{ inputs.qase_run_complete }}
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+  QASE_MODE: testops
 
 jobs:
   build-robot-framework:
