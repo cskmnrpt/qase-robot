@@ -1,1 +1,45 @@
-.
+name: Run tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      qase_api_base_url:
+        description: 'Qase API URL'
+        required: true
+      qase_report:
+        description: 'Enabled/disabled reporting to Qase'
+        required: true
+      qase_project_code:
+        description: 'Qase project code'
+        required: true
+      qase_run_id:
+        description: 'Qase Run ID'
+        required: true
+      qase_run_complete:
+        description: 'Complete Qase Run'
+        required: true
+
+env:
+  QASE_API_BASE_URL: ${{ inputs.qase_api_base_url }}
+  QASE_REPORT: ${{ inputs.qase_report }}
+  QASE_PROJECT_CODE: ${{ inputs.qase_project_code }}
+  QASE_RUN_ID: ${{ inputs.qase_run_id }}
+  QASE_RUN_COMPLETE: ${{ inputs.qase_run_complete }}
+  QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+
+jobs:
+  build-robot-framework:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run Robot Framework tests
+        run: |
+          robot --listener qaseio.robotframework.Listener example.robot
