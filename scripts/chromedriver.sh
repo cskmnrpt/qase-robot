@@ -24,3 +24,18 @@ unzip chromedriver_linux64.zip && chmod +x chromedriver && sudo mv chromedriver 
 # Verify the installation
 chromedriver -version
 google-chrome --version
+
+# Install additional dependencies required for Selenium and Xvfb
+sudo apt-get install -qqy \
+    libx11-dev \
+    libxcomposite-dev \
+    libxdamage-dev \
+    libxi6 \
+    libgdk-pixbuf2.0-0 \
+    libnss3 \
+    libasound2 \
+    fonts-liberation \
+    libappindicator3-1 \
+    libnspr4 \
+    xdg-utils \
+    xvfb  # Install Xvfb for virtual display
