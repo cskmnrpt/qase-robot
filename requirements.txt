@@ -1,0 +1,6 @@
+robotframework
+qase-robotframework
+robotframework-seleniumlibrary
+robotframework-pabot
+robotframework-randomlibrary
+robotframework-tidy
