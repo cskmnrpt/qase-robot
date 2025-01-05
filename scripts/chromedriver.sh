@@ -21,10 +21,6 @@ export CHROMEDRIVER_VERSION=`curl -s https://chromedriver.storage.googleapis.com
 curl -L -O "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip"
 unzip chromedriver_linux64.zip && chmod +x chromedriver && sudo mv chromedriver /usr/local/bin
 
-# Verify the installation
-chromedriver -version
-google-chrome --version
-
 # Install additional dependencies required for Selenium and Xvfb
 sudo apt-get install -qqy \
     libx11-dev \
