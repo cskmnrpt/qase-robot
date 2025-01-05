@@ -40,11 +40,13 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
         with:
+          chrome-version: latest
 
       - name: Setup Chromedriver
         uses: SeleniumHQ/setup-selenium@v1
         with:
           browser: chrome
+          version: latest
 
       - name: Verify Chrome and Chromedriver Versions
         run: |
