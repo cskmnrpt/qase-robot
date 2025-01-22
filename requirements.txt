@@ -1,6 +1,8 @@
-robotframework
-qase-robotframework
+robotframework~=7.2
+qase-robotframework==3.2.4
 robotframework-seleniumlibrary
 robotframework-pabot
 robotframework-randomlibrary
 robotframework-tidy
+
+selenium~=4.28.0
