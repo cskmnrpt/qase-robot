@@ -19,7 +19,9 @@ def capture_and_attach_screenshot(
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=chrome_options)
+
     try:
         # Attach screenshot directly to Qase report
         qase.attach(driver.get_screenshot_as_png(), "image/png", "screenshot.png")
