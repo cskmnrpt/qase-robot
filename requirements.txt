@@ -4,3 +4,4 @@ robotframework-seleniumlibrary
 robotframework-pabot
 robotframework-randomlibrary
 robotframework-tidy
+webdriver-manager

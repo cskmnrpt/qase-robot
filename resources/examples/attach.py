@@ -4,6 +4,9 @@ from qase.robotframework.method import qase
 from robot.api.deco import keyword
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 @keyword("Capture Screenshot And Attach To Qase")
@@ -12,15 +15,11 @@ def capture_and_attach_screenshot(
 ):
     """
     Capture a screenshot of the current page in the browser and attach it to Qase.
-
-    Args:
-        driver: The Selenium WebDriver instance.
-        screenshot_path: The path to save the screenshot (e.g., 'screenshot.png').
-        save_locally: Optional flag to save screenshot locally (default: False)
-
-    Returns:
-        bool: True if successful, False otherwise
     """
+
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Attach screenshot directly to Qase report
         qase.attach(driver.get_screenshot_as_png(), "image/png", "screenshot.png")
@@ -37,3 +36,4 @@ def capture_and_attach_screenshot(
     except Exception as e:
         print(f"Unexpected error: {str(e)}")
         return False
+    driver.quit()
