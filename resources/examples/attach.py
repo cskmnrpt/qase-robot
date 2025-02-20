@@ -8,10 +8,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+from resources.examples.custom_library import CustomLibrary
+
 
 @keyword("Capture Screenshot And Attach To Qase")
 def capture_and_attach_screenshot(
-    driver: webdriver, screenshot_path: str, save_locally: bool = False
+    screenshot_path: str, save_locally: bool = False
 ):
     """
     Capture a screenshot of the current page in the browser and attach it to Qase.
@@ -23,8 +25,9 @@ def capture_and_attach_screenshot(
     driver = webdriver.Chrome(options=chrome_options)
 
     try:
+        driver = CustomLibrary.get_current_driver()
         # Attach screenshot directly to Qase report
-        qase.attach(driver.get_screenshot_as_png(), "image/png", "screenshot.png")
+        qase.attach((driver.get_screenshot_as_png(), "image/png", "screenshot.png"))
 
         # Save the screenshot locally if requested
         if save_locally:
